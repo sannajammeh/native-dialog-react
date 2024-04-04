@@ -1,0 +1,16 @@
+.dialog {
+  display: block;
+  inset: 0;
+  overflow: hidden;
+  position: fixed;
+
+  &:not([open]) {
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  &[open] {
+    pointer-events: auto;
+    visibility: visible;
+  }
+}

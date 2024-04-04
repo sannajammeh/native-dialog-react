@@ -1,0 +1,107 @@
+:root {
+  --app-bg: var(--gray1);
+  --lowContrast: #000;
+  --highContrast: #fff;
+  --gray1: #161616;
+  --gray2: #1c1c1c;
+  --gray3: #232323;
+  --gray4: #282828;
+  --gray5: #2e2e2e;
+  --gray6: #343434;
+  --gray7: #3e3e3e;
+  --gray8: #505050;
+  --gray9: #707070;
+  --gray10: #7e7e7e;
+  --gray11: #a0a0a0;
+  --gray12: #ededed;
+  --grayA1: hsla(0, 0%, 100%, 0);
+  --grayA2: hsla(0, 0%, 100%, 0.026);
+  --grayA3: hsla(0, 0%, 100%, 0.056);
+  --grayA4: hsla(0, 0%, 100%, 0.077);
+  --grayA5: hsla(0, 0%, 100%, 0.103);
+  --grayA6: hsla(0, 0%, 100%, 0.129);
+  --grayA7: hsla(0, 0%, 100%, 0.172);
+  --grayA8: hsla(0, 0%, 100%, 0.249);
+  --grayA9: hsla(0, 0%, 100%, 0.386);
+  --grayA10: hsla(0, 0%, 100%, 0.446);
+  --grayA11: hsla(0, 0%, 100%, 0.592);
+  --grayA12: hsla(0, 0%, 100%, 0.923);
+  --blue1: #0f1720;
+  --blue2: #0f1b2d;
+  --blue3: #10243e;
+  --blue4: #102a4c;
+  --blue5: #0f3058;
+  --blue6: #0d3868;
+  --blue7: #0a4481;
+  --blue8: #0954a5;
+  --blue9: #0091ff;
+  --blue10: #369eff;
+  --blue11: #52a9ff;
+  --blue12: #eaf6ff;
+}
+html {
+  color-scheme: dark;
+
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+::before,
+::after {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--app-bg);
+
+  &::before {
+    background-image: radial-gradient(
+        at 27% 37%,
+        var(--blue9) 0,
+        transparent 50%
+      ),
+      radial-gradient(at 97% 80%, #9772fe 0, transparent 50%);
+    opacity: 0.02;
+
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+main {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-inline: 1rem;
+  padding-block: 2rem;
+
+  @media screen and (min-width: 768px) {
+    max-width: 77ch;
+    padding-inline: 1rem;
+
+    padding-block: 2rem;
+  }
+}
+
+dialog > div > footer {
+  display: flex;
+  gap: 1rem;
+}
+
+pre {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--gray5) !important;
+}

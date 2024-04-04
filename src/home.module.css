@@ -1,0 +1,149 @@
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  & button {
+    cursor: pointer;
+  }
+}
+
+.iconButton {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--gray4);
+  }
+}
+
+.basic {
+  position: fixed;
+  background-color: var(--gray5);
+  padding: 1rem;
+  margin: auto;
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  transition-property: opacity, visibility;
+
+  &::backdrop {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  opacity: 0;
+
+  &:not([open]) {
+    opacity: 0;
+  }
+
+  &[open] {
+    opacity: 1;
+  }
+}
+
+.drawer {
+  overflow-y: auto;
+  position: fixed;
+  background-color: var(--gray3);
+  height: 100%;
+  padding: 1rem;
+  max-width: 100vw;
+  max-height: 100%;
+  width: 77ch;
+  right: 0;
+  top: 0;
+  left: unset;
+  border: none;
+
+  transform: translateX(100%);
+
+  transition: transform 0.3s ease;
+  transition-property: visibility, transform;
+
+  &::backdrop {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  &[open] {
+    transform: translateX(0);
+  }
+}
+
+.animated {
+  background-color: var(--gray5);
+  padding: 1rem;
+  margin: auto;
+  border: none;
+  border-radius: 1rem;
+
+  transition: all 0.3s ease;
+  transition-property: opacity, visibility; /* visibility is needed for the backdrop */
+
+  &::backdrop {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  will-change: transform, opacity, visibility;
+  opacity: 0;
+
+  animation: slideDownScale 0.3s ease forwards;
+
+  &:not([open]) {
+    opacity: 0;
+  }
+
+  &[open] {
+    opacity: 1;
+    animation: slideUpScale 0.3s ease forwards;
+  }
+}
+
+@keyframes slideUpScale {
+  0% {
+    transform: translateY(20px) scale(0.5);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDownScale {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(-40px) scale(0.5);
+  }
+}
+
+.drawerClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.codeContainer {
+  position: relative;
+  & .copy {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+dialog {
+  &:not(.drawer) dialog.drawer {
+    &:not([open]) {
+      transition: none;
+    }
+  }
+}
